@@ -1,4 +1,6 @@
 package com.dashconnect.dristikon;
+import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +12,10 @@ import com.wikitude.architect.ArchitectView;
 
 import java.io.IOException;
 
-public class ArchitectActivity extends AppCompatActivity {
+import static android.net.sip.SipErrorCode.TIME_OUT;
 
+public class ArchitectActivity extends AppCompatActivity {
+    private static int TIME_OUT = 10000;
     /**
      * holds the Wikitude SDK AR-View, this is where camera, markers, compass, 3D models etc. are rendered
      */
@@ -40,7 +44,20 @@ public class ArchitectActivity extends AppCompatActivity {
             Log.e(this.getClass().getName(), "Exception in ArchitectView.onCreate()", rex);
         }
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(ArchitectActivity.this, MapsActivity.class);
+
+                        i.putExtra("clue","Clue was found!");
+
+                startActivity(i);
+                finish();
+            }
+        }, TIME_OUT);
     }
+
+
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {

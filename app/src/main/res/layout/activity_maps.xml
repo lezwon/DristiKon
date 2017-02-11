@@ -23,7 +23,7 @@
         android:layout_gravity="center|top"
         android:layout_margin="@dimen/fab_margin"
         map:srcCompat="@drawable/searchglass"
-        android:background="@drawable/lookup" />
+        android:background="@color/colorWhite" />
 
     <ListView
         android:id="@+id/list"

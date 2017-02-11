@@ -56,6 +56,7 @@ public class MapsActivity extends AppCompatActivity implements
     float distance;
 
     ListView list;
+    Intent i;
     String[] itemname ={
             "Knife",
             "Finger print",
@@ -75,7 +76,10 @@ public class MapsActivity extends AppCompatActivity implements
         num.add(R.drawable.knife);
         num.add(R.drawable.finger_print);
 
-
+        i=getIntent();
+        String msg=i.getStringExtra("clue");
+        if(msg!=null)
+        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
         distance=10.0f;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
