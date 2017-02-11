@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=5A:B3:A4:CB:49:74:DB:13:11:44:AD:C3:FA:C1:05:9C:1F:DA:C7:14%3Bcom.dashconnect.dristikon
+
+    You can also add your credentials to an existing key, using this line:
+    5A:B3:A4:CB:49:74:DB:13:11:44:AD:C3:FA:C1:05:9C:1F:DA:C7:14;com.dashconnect.dristikon
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyDuZE8e7ozQXrtnGalFdzP43TpeTp-n85w
+    </string>
+</resources>
