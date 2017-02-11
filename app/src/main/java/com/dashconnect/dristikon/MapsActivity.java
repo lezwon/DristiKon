@@ -2,6 +2,7 @@ package com.dashconnect.dristikon;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.design.widget.FloatingActionButton;
@@ -47,15 +48,14 @@ public class MapsActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_maps);
         mFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mFragment.getMapAsync(this);
-    /*    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(MapsActivity.this, ArchitectActivity.class));
             }
         });
-*/
+
     }
 
 
