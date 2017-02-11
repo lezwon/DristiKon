@@ -1,20 +1,19 @@
 package com.dashconnect.dristikon;
 
 
+import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.location.Location;
-import android.media.MediaPlayer;
-import android.os.AsyncTask;
-import android.os.IBinder;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -48,8 +47,15 @@ public class MapsActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_maps);
         mFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mFragment.getMapAsync(this);
-
-
+    /*    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+*/
     }
 
 
@@ -87,6 +93,7 @@ public class MapsActivity extends AppCompatActivity implements
 
         mGoogleApiClient.connect();
         mGoogleMap.getUiSettings(). setZoomGesturesEnabled(false);
+        mGoogleMap.getUiSettings().setCompassEnabled(false);
         MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json);
         mGoogleMap.setMapStyle(style);
 
@@ -106,6 +113,7 @@ public class MapsActivity extends AppCompatActivity implements
         // Toast.makeText(this, "onConnected", Toast.LENGTH_SHORT).show();
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -166,6 +174,13 @@ public class MapsActivity extends AppCompatActivity implements
 
         if(distance<5){
             Toast.makeText(this,"Reached crime location",Toast.LENGTH_SHORT).show();
+
+
+
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.popup, null); //custom_layout is your xml file which contains popuplayout
+            LinearLayout layout = (LinearLayout) view.findViewById(R.id.popuplayout);
+            layout.addView(view);
         }
         //place marker at current position
         //mGoogleMap.clear();
