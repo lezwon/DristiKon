@@ -17,8 +17,9 @@
     <stroke
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="3dip"
-        android:color="#f9fff9" />
+        android:width="4dip"
+
+        />
 
     <padding
         android:layout_width="wrap_content"
@@ -26,5 +27,7 @@
         android:bottom="4dp"
         android:left="4dp"
         android:right="4dp"
-        android:top="4dp" />
+        android:top="4dp"
+        android:color="#ff00"
+        />
 </shape>
