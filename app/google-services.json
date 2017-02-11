@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "935367030161",
+    "firebase_url": "https://dristikon-1717a.firebaseio.com",
+    "project_id": "dristikon-1717a",
+    "storage_bucket": "dristikon-1717a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935367030161:android:8a7bbbccc536a0b3",
+        "android_client_info": {
+          "package_name": "com.dashconnect.dristikon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935367030161-lqvnnj180s44e47leb37ad2uc080flso.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dashconnect.dristikon",
+            "certificate_hash": "478ADCFE1D2575D0D849243FCC75D3F40E00ED5A"
+          }
+        },
+        {
+          "client_id": "935367030161-1ol9ovkauvhvot403m75h3tk1ivfvoai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARZdcrfgFlanwiszzhnGx0i3v73MTZrg0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935367030161-1ol9ovkauvhvot403m75h3tk1ivfvoai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
