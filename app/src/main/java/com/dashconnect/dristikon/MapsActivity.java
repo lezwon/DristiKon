@@ -4,6 +4,7 @@ package com.dashconnect.dristikon;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -15,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -35,6 +38,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.MapStyleOptions;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsActivity extends AppCompatActivity implements
         OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener,GoogleMap.OnMarkerClickListener {
 
@@ -47,8 +54,27 @@ public class MapsActivity extends AppCompatActivity implements
     Marker currLocationMarker, crimeMarker,clueMarker;
     float distance;
 
+    ListView list;
+    String[] itemname ={
+            "Knife",
+            "Finger print",
+
+    };
+    List<Integer> num = new ArrayList<>();
+
+    Integer[] imgid= new Integer[]{
+            R.drawable.bloody_body,
+            R.drawable.finger_print
+    };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        num.add(R.drawable.bloody_body);
+        num.add(R.drawable.finger_print);
+
+
         distance=10.0f;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -65,6 +91,23 @@ public class MapsActivity extends AppCompatActivity implements
                         = (LayoutInflater) getBaseContext()
                         .getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.popup, null);
+                Integer[] finalResult = num.toArray(new Integer[num.size()]);
+                final CustomListAdapter adapter=new CustomListAdapter(MapsActivity.this, itemname,finalResult);
+                list=(ListView)findViewById(R.id.list);
+                list.setAdapter(adapter);
+                list.setBackgroundColor(Color.GRAY);
+                list.setVisibility(View.VISIBLE);
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
+                        // TODO Auto-generated method stub
+                        String Slecteditem= itemname[+position];
+                        Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+                    }
+                });
                 final PopupWindow popupWindow = new PopupWindow(
                         popupView,
                         AppBarLayout.LayoutParams.WRAP_CONTENT,
@@ -77,6 +120,7 @@ public class MapsActivity extends AppCompatActivity implements
                     public void onClick(View v) {
                         // TODO Auto-generated method stub
                         popupWindow.dismiss();
+                        list.setVisibility(View.INVISIBLE);
                         fab.show();
                     }
                 });
@@ -85,6 +129,8 @@ public class MapsActivity extends AppCompatActivity implements
 
             }
         });
+
+
     }
 
 
@@ -266,7 +312,7 @@ public class MapsActivity extends AppCompatActivity implements
     @Override
     public boolean onMarkerClick(Marker marker) {
         if (marker.getId().equals(crimeMarker.getId()) || marker.getId().equals(clueMarker.getId())) {
-            if (distance < 30) {
+            if (distance < 50) {
                 Toast.makeText(this, "Reached crime location", Toast.LENGTH_SHORT).show();
 
 
