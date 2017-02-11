@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -63,7 +64,7 @@ public class MapsActivity extends AppCompatActivity implements
     List<Integer> num = new ArrayList<>();
 
     Integer[] imgid= new Integer[]{
-            R.drawable.bloody_body,
+            R.drawable.knife,
             R.drawable.finger_print
     };
 
@@ -71,7 +72,7 @@ public class MapsActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        num.add(R.drawable.bloody_body);
+        num.add(R.drawable.knife);
         num.add(R.drawable.finger_print);
 
 
@@ -90,7 +91,37 @@ public class MapsActivity extends AppCompatActivity implements
                 LayoutInflater layoutInflater
                         = (LayoutInflater) getBaseContext()
                         .getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.popup, null);
+                View popupView = layoutInflater.inflate(R.layout.material_design_profile_screen_xml_ui_design, null);
+
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView,
+                        AppBarLayout.LayoutParams.WRAP_CONTENT,
+                        AppBarLayout.LayoutParams.WRAP_CONTENT);
+
+                Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+                btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Auto-generated method stub
+                        popupWindow.dismiss();
+                        fab.show();
+                    }
+                });
+
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+            }
+        });
+
+
+        final FloatingActionButton clue = (FloatingActionButton) findViewById(R.id.clue);
+        clue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                clue.hide();
+
                 Integer[] finalResult = num.toArray(new Integer[num.size()]);
                 final CustomListAdapter adapter=new CustomListAdapter(MapsActivity.this, itemname,finalResult);
                 list=(ListView)findViewById(R.id.list);
@@ -105,31 +136,12 @@ public class MapsActivity extends AppCompatActivity implements
                         // TODO Auto-generated method stub
                         String Slecteditem= itemname[+position];
                         Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                final PopupWindow popupWindow = new PopupWindow(
-                        popupView,
-                        AppBarLayout.LayoutParams.WRAP_CONTENT,
-                        AppBarLayout.LayoutParams.WRAP_CONTENT);
-
-                Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-                btnDismiss.setOnClickListener(new Button.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        // TODO Auto-generated method stub
-                        popupWindow.dismiss();
                         list.setVisibility(View.INVISIBLE);
-                        fab.show();
+                        clue.show();
                     }
                 });
-
-                popupWindow.showAtLocation(view, 1, 0, 0);
-
             }
         });
-
 
     }
 

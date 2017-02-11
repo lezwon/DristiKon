@@ -29,6 +29,15 @@
         android:layout_alignLeft="@+id/uName"
         android:layout_alignStart="@+id/uName" />
 
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
+
+
     <Button
         android:id="@+id/dismiss"
         android:layout_width="160dp"

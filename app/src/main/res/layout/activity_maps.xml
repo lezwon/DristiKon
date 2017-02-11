@@ -13,7 +13,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:layout_margin="@dimen/fab_margin"
-        map:srcCompat="@android:drawable/ic_dialog_email" />
+        android:background="@drawable/lookup"
+        map:srcCompat="@drawable/lookup" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/clue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_margin="@dimen/fab_margin"
+        map:srcCompat="@drawable/searchglass"
+        android:background="@drawable/lookup" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </ListView>
 
 
 </fragment>
