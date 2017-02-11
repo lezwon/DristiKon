@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    android:weightSum="1">
 
-    <LinearLayout
-        android:id="@+id/popuplayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/wallet_highlighted_text_holo_light"
-        android:orientation="horizontal">
-    </LinearLayout>
 
-</LinearLayout>
+    <TextView
+        android:text="Username"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:id="@+id/uName"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/dismiss"
+        android:layout_alignStart="@+id/dismiss"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="Level"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/level"
+        android:textAlignment="center"
+        android:layout_below="@+id/uName"
+        android:layout_alignLeft="@+id/uName"
+        android:layout_alignStart="@+id/uName" />
+
+    <Button
+        android:id="@+id/dismiss"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Dismiss"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/level"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
